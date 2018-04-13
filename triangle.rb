@@ -14,7 +14,11 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  if (a == b) && (a == c)
+  if (a <= 0) || (b <= 0) || (c <= 0)
+    raise TriangleError, "Illegal Triangle"
+  elsif (a+b < c) || (b+c < a) || (a+c < b)
+    raise TriangleError, "Illegal Triangle"
+  elsif (a == b) && (a == c)
     :equilateral
   elsif (a == b) || (a == c ) || (b ==c)
     :isosceles
@@ -25,4 +29,5 @@ end
 
 # Error class used in part 2.  No need to change this code.
 class TriangleError < StandardError
+
 end
